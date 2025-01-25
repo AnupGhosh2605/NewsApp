@@ -36,9 +36,10 @@ Tried to build an iOS application which can show the latet news of US.
 6. Double click and go inside the "NewsApp-main" folder
 7. Next click on the "NewsApp.xcodeproj" file
 8. Now project will be opened in the Xcode
-9. Select any of the iOS simultor or connect physical device
-10. Now hit the play button in the top left corner of the Xcode
-11. Finally "NEWS" App will be  installed in the similator/Device and launched automatically.
+9. Go the the "Constants.swift" file and add the "API_KEY" (Provided separately)
+10. Select any of the iOS simultor or connect physical device
+11. Now hit the play button in the top left corner of the Xcode
+12. Finally "NEWS" App will be  installed in the similator/Device and launched automatically.
 
 
 ## Screenshots
