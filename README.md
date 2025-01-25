@@ -39,7 +39,7 @@ Tried to build an iOS application which can show the latet news of US.
 </p>
 
 <p align="center">
-  <img src="https://github.com/AnupGhosh2605/NewsApp/blob/3ea371892c39aead5969c83a1fa7c6b4dc44267c/Images/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202025-01-25%20at%2021.17.35.png" alt="App Screenshot 4" width="300">
+  <img src="https://github.com/AnupGhosh2605/NewsApp/blob/dd0eed3c86198503c4424e84727c9b3b899e8452/Images/Screenshot%20-%20iPhone%2015%20Pro%20-%202025-01-25%20at%2023.02.07.png" alt="App Screenshot 4" width="300">
 </p>
 
 ---
