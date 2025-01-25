@@ -27,6 +27,19 @@ Tried to build an iOS application which can show the latet news of US.
 * Potrait and Landscape Support
 
 
+### Steps to run the "NEWS" App
+1. To Run the application XCode should be present in the Machine
+2. Go the "NewsApp" Repository or Click on the link https://github.com/AnupGhosh2605/NewsApp
+3. Download the code by clicking on the "Download ZIP" 
+4. Save the "NewsApp-main.zip" file in the machine 
+5. Unzip the file
+6. Double click and go inside the "NewsApp-main" folder
+7. Next click on the "NewsApp.xcodeproj" file
+8. Now project will be opened in the Xcode
+9. Select any of the iOS simultor or connect physical device
+10. Now hit the play button in the top left corner of the Xcode
+11. Finally "NEWS" App will be  installed in the similator/Device and launched automatically.
+
 
 ## Screenshots
 
