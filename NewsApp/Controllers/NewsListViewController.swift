@@ -6,26 +6,49 @@
 //
 
 import UIKit
+import Combine
+
 
 protocol NewsCellProtocol {
     func configure(with article: Article)
     func loadImage(from url: String?, viewModel: NewsViewModel, completion: @escaping (UIImage?) -> Void)
 }
 
-class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource  {
+class NewsListViewController: UIViewController  {
     
-    private let vm = NewsViewModel()
+    private let viewModel = NewsViewModel()
+    private var cancellables: Set<AnyCancellable> = []
+    
     
     @IBOutlet weak var tableView: UITableView!
-    
     var newsData : NewsData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableView()
-        fetchAndReload()
         configureNavBar()
+        fetchAndReload()
         pullToRefresh()
+        addSubscriber()
+        
+    }
+    
+    // Subscriber to get the updated value from view model
+    private func addSubscriber() {
+        viewModel.$newsData
+            .sink { [weak self] returnedNewsData in
+                self?.newsData = returnedNewsData
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    // Fetch the data from the API and reload the TableView
+    private func fetchAndReload(){
+        // Fetch data from core data
+        viewModel.fetchNews()
     }
     
     // func to reload the data by pulling the tableview from top
@@ -43,9 +66,7 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     // Configure the Navigation bar
     private func configureNavBar() {
-        
         navigationItem.title = Constants.NavBarTitle            //  Add Navigation title
-        
         let titleFont = UIFont.boldSystemFont(ofSize: 24)
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: titleFont,
@@ -54,16 +75,10 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
     }
     
-    // Fetch the data from the API and reload the TableView
-    private func fetchAndReload(){
-        self.vm.fetchNewsData()
-        self.vm.onFetchData = { [weak self] result in
-            DispatchQueue.main.async {
-                self?.newsData = result
-                self?.tableView.reloadData()
-            }
-        }
-    }
+}
+
+
+extension NewsListViewController : UITableViewDelegate, UITableViewDataSource {
     
     // Register the tableView as well as table view cells
     private func registerTableView(){
@@ -73,7 +88,7 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
         self.tableView.register(UINib(nibName: ReuseIdentifier.newsListTopTableViewCell, bundle: nil), forCellReuseIdentifier: ReuseIdentifier.newsListTopTableViewCell)
     }
     
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsData?.articles?.count ?? 0
     }
@@ -88,15 +103,15 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
             let cell = tableView.dequeueReusableCell(withIdentifier: ReuseIdentifier.newsListTopTableViewCell, for: indexPath) as! NewsListTopTableViewCell
             cell.configure(with: article)
             
-            cell.loadImage(from: article.urlToImage, viewModel: vm) { image in
+            cell.loadImage(from: article.urlToImage, viewModel: viewModel) { image in
                 
-            // In case of null value for image
+                // In case of null value for image
                 guard let image = image else {
                     cell.newsImage.image = UIImage(named: "newsImage")
                     return
                 }
                 cell.newsImage.image = image
-
+                
                 
             }
             return cell
@@ -107,7 +122,7 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
             cell.configure(with: article)
             
             
-            cell.loadImage(from: article.urlToImage, viewModel: vm) { image in
+            cell.loadImage(from: article.urlToImage, viewModel: viewModel) { image in
                 
                 // In case of null value for image
                 guard let image = image else {

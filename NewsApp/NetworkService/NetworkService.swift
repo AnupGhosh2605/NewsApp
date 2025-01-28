@@ -19,6 +19,7 @@ enum NetworkError : Error {
     case badURL
     case unowned
     case decodingError
+    case networkError
 }
 
 

@@ -23,6 +23,10 @@
 		4A2310F02D4372D900346D5A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2310EF2D4372D900346D5A /* NewsViewModel.swift */; };
 		4A2310F22D43730D00346D5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2310F12D43730D00346D5A /* Constants.swift */; };
 		4A2310F42D43B08500346D5A /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2310F32D43B08500346D5A /* NewsDetailsViewController.swift */; };
+		4A35AD6F2D47A2DA0024FFED /* NewsDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A35AD6D2D47A2DA0024FFED /* NewsDataContainer.xcdatamodeld */; };
+		4A35AD712D47A4340024FFED /* CoreNewsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35AD702D47A4340024FFED /* CoreNewsDataManager.swift */; };
+		4A58CFE82D4810F50023FC21 /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58CFE72D4810F50023FC21 /* MockCoreDataManager.swift */; };
+		4A58CFEA2D48942A0023FC21 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58CFE92D48942A0023FC21 /* TestCoreDataStack.swift */; };
 		4A7B0C712D44EFC30051E07A /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B0C702D44EFC30051E07A /* MockNetworkService.swift */; };
 		4A7B0C732D44F38F0051E07A /* NewsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B0C722D44F38F0051E07A /* NewsViewModelTests.swift */; };
 		4AB275992D440EDC002FEB67 /* NewsListTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB275982D440EDC002FEB67 /* NewsListTopTableViewCell.xib */; };
@@ -67,6 +71,10 @@
 		4A2310EF2D4372D900346D5A /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4A2310F12D43730D00346D5A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A2310F32D43B08500346D5A /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
+		4A35AD6E2D47A2DA0024FFED /* NewsDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsDataContainer.xcdatamodel; sourceTree = "<group>"; };
+		4A35AD702D47A4340024FFED /* CoreNewsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreNewsDataManager.swift; sourceTree = "<group>"; };
+		4A58CFE72D4810F50023FC21 /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
+		4A58CFE92D48942A0023FC21 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		4A7B0C702D44EFC30051E07A /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		4A7B0C722D44F38F0051E07A /* NewsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelTests.swift; sourceTree = "<group>"; };
 		4AB275972D440EDC002FEB67 /* NewsListTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListTopTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +129,7 @@
 		4A2310B12D43671900346D5A /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				4A35AD692D47A2180024FFED /* CoreData */,
 				4A2310E62D4367AA00346D5A /* NetworkService */,
 				4A2310E22D43675200346D5A /* Controllers */,
 				4A2310E32D43675E00346D5A /* Model */,
@@ -143,6 +152,8 @@
 				4A2310C92D43671C00346D5A /* NewsAppTests.swift */,
 				4A7B0C702D44EFC30051E07A /* MockNetworkService.swift */,
 				4A7B0C722D44F38F0051E07A /* NewsViewModelTests.swift */,
+				4A58CFE72D4810F50023FC21 /* MockCoreDataManager.swift */,
+				4A58CFE92D48942A0023FC21 /* TestCoreDataStack.swift */,
 			);
 			path = NewsAppTests;
 			sourceTree = "<group>";
@@ -198,6 +209,15 @@
 				4A2310E72D4367DC00346D5A /* NetworkService.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		4A35AD692D47A2180024FFED /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4A35AD6D2D47A2DA0024FFED /* NewsDataContainer.xcdatamodeld */,
+				4A35AD702D47A4340024FFED /* CoreNewsDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,10 +359,12 @@
 				4A2310E82D4367DC00346D5A /* NetworkService.swift in Sources */,
 				4A2310B52D43671900346D5A /* SceneDelegate.swift in Sources */,
 				4A2310F02D4372D900346D5A /* NewsViewModel.swift in Sources */,
+				4A35AD6F2D47A2DA0024FFED /* NewsDataContainer.xcdatamodeld in Sources */,
 				4A2310EE2D4368CB00346D5A /* NewsListTableViewCell.swift in Sources */,
 				4A2310F42D43B08500346D5A /* NewsDetailsViewController.swift in Sources */,
 				4A2310EA2D4368A700346D5A /* NewsModel.swift in Sources */,
 				4A2310F22D43730D00346D5A /* Constants.swift in Sources */,
+				4A35AD712D47A4340024FFED /* CoreNewsDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +372,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A58CFE82D4810F50023FC21 /* MockCoreDataManager.swift in Sources */,
+				4A58CFEA2D48942A0023FC21 /* TestCoreDataStack.swift in Sources */,
 				4A7B0C732D44F38F0051E07A /* NewsViewModelTests.swift in Sources */,
 				4A7B0C712D44EFC30051E07A /* MockNetworkService.swift in Sources */,
 				4A2310CA2D43671C00346D5A /* NewsAppTests.swift in Sources */,
@@ -693,6 +717,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4A35AD6D2D47A2DA0024FFED /* NewsDataContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4A35AD6E2D47A2DA0024FFED /* NewsDataContainer.xcdatamodel */,
+			);
+			currentVersion = 4A35AD6E2D47A2DA0024FFED /* NewsDataContainer.xcdatamodel */;
+			name = NewsDataContainer.xcdatamodeld;
+			path = "/Users/incture/Desktop/News Sourcetree/NewsApp/CoreData/NewsDataContainer.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4A2310A72D43671900346D5A /* Project object */;
 }

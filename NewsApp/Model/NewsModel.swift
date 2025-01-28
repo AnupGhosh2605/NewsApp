@@ -17,11 +17,16 @@ struct NewsData: Codable {
 }
 
 struct Article: Codable {
+    var id: String { url ?? UUID().uuidString }
     let author: String?
     let title: String?
     let description: String?
     let url: String?
     let urlToImage: String?
+    
+    enum CodingKeys : String, CodingKey {
+        case author, title, description, url, urlToImage
+    }
 }
 
 
