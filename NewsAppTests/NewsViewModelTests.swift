@@ -97,11 +97,39 @@ class NewsViewModelTests: XCTestCase {
         // 4. Wait for expectations
         wait(for: [expectation], timeout: 1.0)
     }
-
     
+    func test_fetchImageDataSuccess() {
+        
+        let imageUrl  = "https://ambcrypto.com/wp-content/uploads/2025/01/Samyukhtha-25-1000x600.webp"
+        
+        mockNetworkService.mockData = UIImage(named: "newsImage")?.pngData() ?? Data()
+        mockNetworkService.mockError = nil
+        
+        let expectation = XCTestExpectation(description: "Image data Success")
+        
+        viewModel.fetchImageData(imageUrl: imageUrl) { imageData in
+            XCTAssertNotNil(imageData,"Image Data should not be nil ")
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
     
-    
-
-
+    func test_fetchImageDataFailure() {
+        
+        let imageUrl  = "https://ambcrypto.com/wp-content/uploads/2025/01/Samyukhtha-25-1000x600.webp"
+        
+        mockNetworkService.mockData = nil
+        mockNetworkService.mockError = .dataError
+        
+        let expectation = XCTestExpectation(description: "Image data Failure")
+        
+        viewModel.fetchImageData(imageUrl: imageUrl) { imageData in
+            XCTAssertNil(imageData,"Image Data should be nil on fetching")
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
     
 }
